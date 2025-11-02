@@ -1,10 +1,18 @@
-# Map Servers with OpenAI Agents SDK - Part 2: Implementation
+# Building and Demonstrating Map Servers with OpenAI Agents SDK
 
-University Assignment - Python implementation of map servers using OpenAI Agents SDK.
+**University Assignment - Complete Implementation**
 
 **Author:** Ayman Kanso
 
-This assignment demonstrates the integration of two map servers (OpenStreetMap and OpenRouteService) with the OpenAI Agents SDK, implementing a unified MapAssistant that can handle geocoding, routing, and spatial analysis queries through natural language interaction.
+This project demonstrates the integration of two custom map servers (OpenStreetMap and OpenRouteService) with the OpenAI Agents SDK, implementing a unified MapAssistant that can handle geocoding, routing, and spatial analysis queries through natural language interaction.
+
+## Overview
+
+This assignment explores the Model Context Protocol (MCP) concept and implements custom map servers as agent "tools" using the OpenAI Agents SDK. The project includes:
+- Analysis of MCP fundamentals and existing map servers
+- Implementation of two custom map servers following MCP conventions
+- Integration with OpenAI AssistantAgent for intelligent query routing
+- Comprehensive testing and live demonstration
 
 ---
 
@@ -24,6 +32,11 @@ This project implements all 5 requirements for Part 2:
 
 ```
 C5/
+├── docs/
+│   ├── C5.pdf                     # Part 1: MCP analysis & map server exploration
+│   └── Reflection.pdf             # Lessons learned and next steps
+├── recording/
+│   └── raw-recording.mp4          # Part 3: Screencast demonstration
 ├── src/
 │   ├── servers/
 │   │   ├── osm_server.py          # OSMGeoMCP - OpenStreetMap server
@@ -119,6 +132,41 @@ pytest tests/ -v
 
 ---
 
+## Challenges & Solutions
+
+### 1. Input and Output Schema Design
+**Challenge:** The agent needed to know exactly what data each tool accepts and returns, requiring detailed JSON schemas for all tools.
+
+**Solution:** Defined comprehensive schemas with proper types, properties, required fields, and descriptions to help the AI understand when and how to use each tool.
+
+### 2. Integration with OpenAI Agents SDK
+**Challenge:** Multiple map server tools needed to work seamlessly with OpenAI's AssistantAgent, requiring proper integration and error handling.
+
+**Solution:** Tested each function individually before combining them into the MapAssistant agent. Implemented proper async handling, tool routing, and JSON serialization.
+
+### 3. ORS API Authentication
+**Challenge:** OpenRouteService API requires authentication, causing initial test failures.
+
+**Solution:** Obtained free API key and implemented environment variable loading in both application and test files.
+
+### 4. External API Reliability
+**Challenge:** Overpass API experienced temporary timeouts during testing.
+
+**Solution:** Implemented retry logic with exponential backoff to handle temporary server issues gracefully.
+
+---
+
+## Deliverables
+
+This repository contains all required assignment deliverables:
+
+1. ✅ **Written Summary** (`docs/C5.pdf`) - Analysis of MCP concepts and existing map servers
+2. ✅ **Source Code** - Complete implementation with setup instructions and tests
+3. ✅ **Screencast Video** (`recording/raw-recording.mp4`) - 5-7 minute demonstration
+4. ✅ **Reflection** (`docs/Reflection.pdf`) - Lessons learned and future improvements
+
+---
+
 ## Requirements Checklist
 
 - [x] **Requirement 1**: Two map servers implemented (OSMGeoMCP, RouteMCP)
@@ -139,6 +187,12 @@ pytest tests/ -v
 
 ---
 
+## GitHub Repository
+
+**Repository:** [Building-and-Demonstrating-Map-Servers-with-OpenAI-Agents-SDK](https://github.com/aymankanso/Building-and-Demonstrating-Map-Servers-with-OpenAI-Agents-SDK)
+
+---
+
 ## Author
 
-Ayman Kanso - Part 2: Implementation Assignment
+**Ayman Kanso** - University Assignment: Building and Demonstrating Map Servers with OpenAI Agents SDK
