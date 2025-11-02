@@ -182,12 +182,6 @@ This repository contains all required assignment deliverables:
 
 ---
 
-## GitHub Repository
-
-**Repository:** [Building-and-Demonstrating-Map-Servers-with-OpenAI-Agents-SDK](https://github.com/aymankanso/Building-and-Demonstrating-Map-Servers-with-OpenAI-Agents-SDK)
-
----
-
 ## Author
 
 **Ayman Kanso** - University Assignment: Building and Demonstrating Map Servers with OpenAI Agents SDK
