@@ -149,11 +149,6 @@ pytest tests/ -v
 
 **Solution:** Obtained free API key and implemented environment variable loading in both application and test files.
 
-### 4. External API Reliability
-**Challenge:** Overpass API experienced temporary timeouts during testing.
-
-**Solution:** Implemented retry logic with exponential backoff to handle temporary server issues gracefully.
-
 ---
 
 ## Deliverables
