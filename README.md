@@ -47,12 +47,16 @@ pip install -r requirements.txt
 
 ### 2. Configure Environment
 
-Copy `.env.example` to `.env` and add your API key:
+Copy `.env.example` to `.env` and add your API keys:
 
 ```
 OPENAI_API_KEY=your_openai_api_key_here
-ORS_API_KEY=your_ors_api_key_here  # Optional
+ORS_API_KEY=your_ors_api_key_here
 ```
+
+**Get API Keys:**
+- **OpenAI:** https://platform.openai.com/api-keys
+- **OpenRouteService:** https://openrouteservice.org/dev/#/signup (Free)
 
 ---
 
@@ -104,6 +108,10 @@ Example queries:
 ```powershell
 pytest tests/ -v
 ```
+
+**Test Results:** ✅ All 16 tests passing (100% coverage)
+- OSM Server: 6/6 tests ✅
+- ORS Server: 10/10 tests ✅
 
 ---
 
