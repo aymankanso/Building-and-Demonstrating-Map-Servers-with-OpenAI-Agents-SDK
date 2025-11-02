@@ -5,6 +5,7 @@ Uses Nominatim (geocoding) and Overpass (POI search) APIs
 
 import httpx
 import os
+import asyncio
 from typing import Dict, Any, List, Optional
 from dataclasses import dataclass
 import json
@@ -162,14 +163,29 @@ class OSMGeoMCP:
         out center {limit};
         """
         
-        async with httpx.AsyncClient(timeout=self.params.timeout) as client:
-            response = await client.post(
-                self.params.overpass_url,
-                data={"data": overpass_query},
-                headers=self.headers
-            )
-            response.raise_for_status()
-            data = response.json()
+        # Retry logic for handling temporary server issues
+        max_retries = 3
+        retry_delay = 1  # seconds
+        
+        for attempt in range(max_retries):
+            try:
+                async with httpx.AsyncClient(timeout=self.params.timeout) as client:
+                    response = await client.post(
+                        self.params.overpass_url,
+                        data={"data": overpass_query},
+                        headers=self.headers
+                    )
+                    response.raise_for_status()
+                    data = response.json()
+                break  # Success, exit retry loop
+            except (httpx.HTTPStatusError, httpx.TimeoutException) as e:
+                if attempt < max_retries - 1:
+                    # Wait before retrying with exponential backoff
+                    await asyncio.sleep(retry_delay * (2 ** attempt))
+                    continue
+                else:
+                    # Last attempt failed, raise the error
+                    raise
         
         # Transform results
         results = []
