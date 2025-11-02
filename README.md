@@ -2,6 +2,10 @@
 
 University Assignment - Python implementation of map servers using OpenAI Agents SDK.
 
+**Author:** Ayman Kanso
+
+This assignment demonstrates the integration of two map servers (OpenStreetMap and OpenRouteService) with the OpenAI Agents SDK, implementing a unified MapAssistant that can handle geocoding, routing, and spatial analysis queries through natural language interaction.
+
 ---
 
 ## Project Requirements
@@ -137,4 +141,4 @@ pytest tests/ -v
 
 ## Author
 
-University Student - Part 2: Implementation Assignment
+Ayman Kanso - Part 2: Implementation Assignment
