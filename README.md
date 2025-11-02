@@ -96,7 +96,7 @@ ORS_API_KEY=your_ors_api_key_here
 
 **ServerParams:**
 - `ors_url`: ORS API endpoint
-- `api_key`: ORS API key (optional)
+- `api_key`: ORS API key
 - `user_agent`: User-Agent header
 - `timeout`: Request timeout
 
